@@ -1,4 +1,5 @@
 import Logo from "./components/Logo/Logo";
+import TranslateWidget from "./components/TranslateWidget/TranslateWidget";
 
 const App = () => {
   return (
@@ -6,8 +7,9 @@ const App = () => {
       <header className="header-logo">
         <Logo />
       </header>
-
-      <main className="main"></main>
+      <main className="main">
+        <TranslateWidget />
+      </main>
     </>
   );
 };
