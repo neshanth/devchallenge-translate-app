@@ -15,7 +15,7 @@ const TranslateWidget = () => {
   const [text, setText] = useState("Hello How are you?");
 
   const handleApiCallForLanguageTranslation = () => {
-    fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=${translate}|fr`)
+    fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=${translate}|french`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -23,6 +23,10 @@ const TranslateWidget = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleCopyText = () => {
+    navigator.clipboard.writeText(text);
   };
 
   const handleTranslateLanguageChange = (e, language) => {
@@ -41,6 +45,9 @@ const TranslateWidget = () => {
         <textarea value={text} name="" id="" cols="30" rows="10" onChange={(e) => setText(e.target.value)}></textarea>
       </div>
       <div className="language-footer">
+        <div className="copy">
+          <button onClick={handleCopyText}>Copy</button>
+        </div>
         <button
           onClick={(e) => {
             e.preventDefault();
