@@ -1,6 +1,10 @@
+@import "../../styles/variables.scss";
 .translated-widget {
   .language-options {
     display: flex;
     gap: 1rem;
+  }
+  .selected-language {
+    background-color: $grey-2;
   }
 }
