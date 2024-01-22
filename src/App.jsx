@@ -1,4 +1,6 @@
 import Logo from "./components/Logo/Logo";
+import Translate from "./components/Translate/Translate";
+import TranslateOutput from "./components/TranslateOutput/TranslateOutput";
 import TranslateWidget from "./components/TranslateWidget/TranslateWidget";
 
 const App = () => {
@@ -8,7 +10,8 @@ const App = () => {
         <Logo />
       </header>
       <main className="main">
-        <TranslateWidget />
+        <Translate />
+        <TranslateOutput />
       </main>
     </>
   );

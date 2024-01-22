@@ -1,47 +1,26 @@
 import "./translateWidget.scss";
-import { useState } from "react";
-const TranslateWidget = () => {
-  const buttons = [
-    {
-      id: 1,
-      name: "English",
-    },
-    {
-      id: 2,
-      name: "French",
-    },
-  ];
-  const [translate, setTranslate] = useState("English");
-  const [text, setText] = useState("Hello How are you?");
+import { BUTTONS } from "../../utils/constants";
+const TranslateWidget = (props) => {
+  const { language, handleLanguageChange, isTranslateOutput = false } = props;
+  // const handleCopyText = () => {
+  //   navigator.clipboard.writeText(text);
+  // };
 
-  const handleApiCallForLanguageTranslation = () => {
-    fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=${translate}|french`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const handleCopyText = () => {
-    navigator.clipboard.writeText(text);
-  };
-
-  const handleTranslateLanguageChange = (e, language) => {
-    setTranslate(language);
-  };
   return (
-    <div className="translated-widget">
-      <div className="language-options">
-        {buttons.map((button) => (
-          <button className={`btn ${translate === button.name ? "selected-language" : ""}`} onClick={(e) => handleTranslateLanguageChange(e, button.name)} key={button.id}>
-            {button.name}
-          </button>
-        ))}
-      </div>
-      <div className="language-input">
+    <div className="translate-widget">
+      <section className="header">
+        {!isTranslateOutput && <p>Detect Language</p>}
+        <div className="language-options">
+          {BUTTONS.map((button) => (
+            <button className={`btn ${language === button.name ? "selected-language" : ""}`} onClick={(e) => handleLanguageChange(e, button.name)} key={button.id}>
+              {button.name}
+            </button>
+          ))}
+        </div>
+        {isTranslateOutput && <button>Swticher</button>}
+      </section>
+
+      {/* <div className="language-input">
         <textarea value={text} name="" id="" cols="30" rows="10" onChange={(e) => setText(e.target.value)}></textarea>
       </div>
       <div className="language-footer">
@@ -56,7 +35,7 @@ const TranslateWidget = () => {
         >
           Translate
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
