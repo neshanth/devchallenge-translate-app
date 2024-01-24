@@ -15,13 +15,14 @@ body {
   font-weight: 500;
 }
 
-button {
+.btn {
   cursor: pointer;
   border: none;
   outline: none;
   background: none;
-  color: $white;
+  color: $grey-2;
   font-family: inherit;
+  font-size: 0.75rem;
 }
 
 .bold {
@@ -33,4 +34,10 @@ button {
   display: flex;
   justify-content: center;
   margin-top: 5rem;
+}
+
+.main {
+  margin: 4rem 4.5rem;
+  display: flex;
+  gap: 1rem;
 }

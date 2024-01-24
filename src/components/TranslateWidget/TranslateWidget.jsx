@@ -7,9 +7,9 @@ const TranslateWidget = (props) => {
   // };
 
   return (
-    <div className="translate-widget">
+    <div className={`translate-widget ${isTranslateOutput ? "translate-output" : ""}`}>
       <section className="header">
-        {!isTranslateOutput && <p>Detect Language</p>}
+        {!isTranslateOutput && <p className="detect-language">Detect Language</p>}
         <div className="language-options">
           {BUTTONS.map((button) => (
             <button
