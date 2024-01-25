@@ -1,6 +1,7 @@
 import { handleApiCallForLanguageTranslation } from "../../utils/utils";
 import TranslateWidget from "../TranslateWidget/TranslateWidget";
 import { useState } from "react";
+import { TEXT_LIMIT, LANGUAGESHORTNAME } from "../../utils/constants";
 
 const Translate = () => {
   const [language, setLanguage] = useState("English");
@@ -10,8 +11,8 @@ const Translate = () => {
 
   const handleTranslateBtn = () => {
     const languages = {
-      translate: language,
-      translated: translatedLanguage,
+      translate: LANGUAGESHORTNAME[language],
+      translated: LANGUAGESHORTNAME[translatedLanguage],
     };
     handleApiCallForLanguageTranslation(text, languages)
       .then((data) => {
@@ -28,7 +29,8 @@ const Translate = () => {
   };
 
   const handleTextChange = (e) => {
-    setText(e.target.value);
+    const newText = e.target.value.substr(0, TEXT_LIMIT);
+    setText(newText);
   };
 
   return (

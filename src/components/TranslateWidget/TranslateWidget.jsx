@@ -23,10 +23,14 @@ const TranslateWidget = (props) => {
         </div>
         {isTranslateOutput && <button>Swticher</button>}
       </section>
-
       <div className="language-input">
         <textarea disabled={isTranslateOutput} value={text} name="language-input-textarea" id="" cols="30" rows="10" onChange={handleTextChange}></textarea>
       </div>
+      {!isTranslateOutput && (
+        <div className="text-count">
+          <p>{text.length}/500</p>
+        </div>
+      )}
       <div className="language-footer">
         {/* <div className="copy">
           <button onClick={handleCopyText}>Copy</button>

@@ -43,4 +43,12 @@
       outline: none;
     }
   }
+  .text-count {
+    display: flex;
+    justify-content: flex-end;
+    p {
+      color: $grey-2;
+      font-size: 0.875rem;
+    }
+  }
 }
