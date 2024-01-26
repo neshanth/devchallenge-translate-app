@@ -1,9 +1,14 @@
 import "./translateWidget.scss";
 import { BUTTONS } from "../../utils/constants";
 const TranslateWidget = (props) => {
-  const { language, handleLanguageChange, isTranslateOutput = false, text, handleTextChange, handleTranslateBtn } = props;
+  const { language, handleLanguageChange, isTranslateOutput = false, text, handleTextChange, handleTranslateBtn, handleSwitcherBtn } = props;
   const handleCopyText = () => {
     navigator.clipboard.writeText(text);
+  };
+
+  const handleTextToSpeech = () => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(utterance);
   };
 
   return (
@@ -21,7 +26,20 @@ const TranslateWidget = (props) => {
             </button>
           ))}
         </div>
-        {isTranslateOutput && <button>Swticher</button>}
+        {isTranslateOutput && (
+          <button className="btn switcher-btn" onClick={handleSwitcherBtn}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1.66666 6.66668L0.95955 5.95957L0.252443 6.66668L0.95955 7.37378L1.66666 6.66668ZM17.5 7.66668C18.0523 7.66668 18.5 7.21896 18.5 6.66668C18.5 6.11439 18.0523 5.66668 17.5 5.66668V7.66668ZM4.29288 2.62624L0.95955 5.95957L2.37376 7.37378L5.7071 4.04045L4.29288 2.62624ZM0.95955 7.37378L4.29288 10.7071L5.7071 9.2929L2.37376 5.95957L0.95955 7.37378ZM1.66666 7.66668H17.5V5.66668H1.66666V7.66668Z"
+                fill="#4D5562"
+              />
+              <path
+                d="M18.3333 13.3333L19.0404 12.6262L19.7475 13.3333L19.0404 14.0404L18.3333 13.3333ZM10.8333 14.3333C10.281 14.3333 9.83331 13.8856 9.83331 13.3333C9.83331 12.781 10.281 12.3333 10.8333 12.3333L10.8333 14.3333ZM15.7071 9.29289L19.0404 12.6262L17.6262 14.0404L14.2929 10.7071L15.7071 9.29289ZM19.0404 14.0404L15.7071 17.3738L14.2929 15.9596L17.6262 12.6262L19.0404 14.0404ZM18.3333 14.3333L10.8333 14.3333L10.8333 12.3333L18.3333 12.3333L18.3333 14.3333Z"
+                fill="#4D5562"
+              />
+            </svg>
+          </button>
+        )}
       </section>
       <div className="language-input">
         <textarea disabled={isTranslateOutput} value={text} name="language-input-textarea" id="" cols="30" rows="10" onChange={handleTextChange}></textarea>
@@ -33,7 +51,7 @@ const TranslateWidget = (props) => {
       )}
       <div className="language-footer">
         <div className="footer-buttons">
-          <button className="btn sound-btn">
+          <button onClick={handleTextToSpeech} className="btn sound-btn">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M3.46532 11.6089C2.87114 10.6186 2.87114 9.38143 3.46532 8.39114C3.64663 8.08895 3.94701 7.87726 4.29258 7.80815L5.70344 7.52598C5.78749 7.50917 5.86326 7.46409 5.91814 7.39824L7.17085 5.89498C8.3534 4.47592 8.94468 3.76638 9.47234 3.95742C10 4.14846 10 5.07207 10 6.91928L10 13.0807C10 14.9279 10 15.8515 9.47234 16.0426C8.94468 16.2336 8.3534 15.5241 7.17085 14.105L5.91814 12.6018C5.86326 12.5359 5.78749 12.4908 5.70344 12.474L4.29258 12.1918C3.94701 12.1227 3.64663 11.9111 3.46532 11.6089Z"

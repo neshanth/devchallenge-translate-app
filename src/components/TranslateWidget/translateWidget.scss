@@ -13,6 +13,7 @@
 
     .btn {
       font-size: 0.875rem;
+      font-weight: 700;
     }
   }
   .selected-language {
@@ -31,6 +32,10 @@
     border-bottom: 2px solid $grey-2;
     .detect-language {
       font-size: 0.875rem;
+    }
+
+    .btn-switcher {
+      margin-left: auto;
     }
   }
   .language-input {
@@ -60,12 +65,6 @@
     display: flex;
     justify-content: space-between;
 
-    .copy-btn,
-    .sound-btn {
-      padding: 0.5rem;
-      border: 2px solid $grey-2;
-      border-radius: 0.8rem;
-    }
     .sound-btn {
       margin-right: 0.5rem;
     }
@@ -85,5 +84,16 @@
     .translate-btn:hover {
       background-color: $blue-hover;
     }
+  }
+  .copy-btn,
+  .sound-btn,
+  .switcher-btn {
+    padding: 0.5rem;
+    border: 2px solid $grey-2;
+    border-radius: 0.8rem;
+  }
+
+  .switcher-btn {
+    margin-left: auto;
   }
 }

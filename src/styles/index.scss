@@ -41,3 +41,18 @@ body {
   display: flex;
   gap: 1rem;
 }
+
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column;
+  }
+  .translate-widget {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .translate-widget {
+    margin: 4rem 1.5rem;
+  }
+}

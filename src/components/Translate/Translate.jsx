@@ -23,6 +23,12 @@ const Translate = () => {
       });
   };
 
+  const handleSwitcherBtn = () => {
+    const temp = language;
+    setLanguage(translatedLanguage);
+    setTranslatedLanguage(temp);
+  };
+
   const handleLanguageChange = (e, name, type) => {
     e.preventDefault();
     type === "translate" ? setLanguage(name) : setTranslatedLanguage(name);
@@ -36,7 +42,7 @@ const Translate = () => {
   return (
     <>
       <TranslateWidget handleTranslateBtn={handleTranslateBtn} language={language} handleTextChange={handleTextChange} text={text} handleLanguageChange={handleLanguageChange} />
-      <TranslateWidget isTranslateOutput={true} language={translatedLanguage} handleLanguageChange={handleLanguageChange} text={translatedText} />
+      <TranslateWidget handleSwitcherBtn={handleSwitcherBtn} isTranslateOutput={true} language={translatedLanguage} handleLanguageChange={handleLanguageChange} text={translatedText} />
     </>
   );
 };
