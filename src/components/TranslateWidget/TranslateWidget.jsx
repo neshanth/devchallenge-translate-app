@@ -44,11 +44,11 @@ const TranslateWidget = (props) => {
       <div className="language-input">
         <textarea disabled={isTranslateOutput} value={text} name="language-input-textarea" id="" cols="30" rows="10" onChange={handleTextChange}></textarea>
       </div>
-      {!isTranslateOutput && (
-        <div className="text-count">
-          <p>{text.length}/500</p>
-        </div>
-      )}
+
+      <div className={`text-count ${isTranslateOutput ? "translate-output-text" : ""}`}>
+        <p>{text.length}/500</p>
+      </div>
+
       <div className="language-footer">
         <div className="footer-buttons">
           <button onClick={handleTextToSpeech} className="btn sound-btn">
