@@ -51,4 +51,29 @@
       font-size: 0.875rem;
     }
   }
+  .language-footer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    .copy-btn,
+    .sound-btn {
+      padding: 0.5rem;
+      border: 2px solid $grey-2;
+      border-radius: 0.8rem;
+    }
+    .sound-btn {
+      margin-right: 0.5rem;
+    }
+    .translate-btn {
+      padding: 1rem;
+      font-size: 1rem;
+      background-color: $blue;
+      color: $white;
+      border-radius: 0.5rem;
+    }
+    .translate-btn:hover {
+      background-color: $blue-hover;
+    }
+  }
 }
